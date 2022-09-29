@@ -1,0 +1,11 @@
+{
+  "root": true,
+  // eslint-plugin-prettier integrates Prettier into ESLint.
+  "plugins": ["@typescript-eslint", "prettier"],
+  // eslint-config-prettier disables all rules that are unnecessary or might conflict with Prettier.
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}

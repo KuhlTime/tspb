@@ -1,0 +1,39 @@
+{
+  "name": "@kuhltime/ts-package-template",
+  "version": "0.1.0",
+  "description": "",
+  "author": "André Kuhlmann",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typeings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "typescript",
+    "template",
+    "package"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "concurrently -n esm,cjs \"tsc --build tsconfig.json\" \"tsc --build tsconfig.cjs.json\"",
+    "clean": "rimraf dist",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.23",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "concurrently": "^7.4.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-jsdoc": "^0.4.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.4"
+  }
+}
