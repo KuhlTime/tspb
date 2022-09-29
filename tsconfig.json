@@ -8,7 +8,7 @@
     // If specified, .js (as well as .d.ts, .js.map, etc.) files will be emitted into this directory. The directory structure of the original source files is preserved; see rootDir if the computed root is not what you intended.
     "outDir": "dist/esm",
     // match output dir to input dir. e.g. dist/index instead of dist/src/index
-    "rootDir": "src",
+    "rootDir": "./",
     // Enables the generation of sourcemap files. These files allow debuggers and other tools to display the original TypeScript source code when actually working with the emitted JavaScript files. Source map files are emitted as .js.map (or .jsx.map) files next to the corresponding .js output file.
     "sourceMap": true,
     // Generate .d.ts files for every TypeScript or JavaScript file inside your project. These .d.ts files are type definition files which describe the external API of your module. With .d.ts files, tools like TypeScript can provide intellisense and accurate types for un-typed code.
@@ -26,6 +26,8 @@
     // Don't allow to import js files
     "allowJs": false
   },
+
+  "exclude": ["test", "node_modules", "dist"],
 
   "watchOptions": {
     "excludeDirectories": ["node_modules", "dist"]

@@ -16,6 +16,26 @@
     "plugin:import/recommended",
     "plugin:security/recommended"
   ],
+  "overrides": [
+    {
+      "env": {
+        "jest/globals": true
+      },
+      "files": ["**/*.test.ts"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "settings": {
+        "import/resolver": {
+          "jest": {
+            "jestConfigFile": "./jest.config.js"
+          }
+        }
+      },
+      "rules": {
+        "import/no-unresolved": "off"
+      }
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "prettier/prettier": "error",
