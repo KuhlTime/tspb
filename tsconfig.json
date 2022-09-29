@@ -22,7 +22,9 @@
     // interop between ESM and CJS modules. Recommended by TS
     "esModuleInterop": true,
     // error out if import and file system have a casing mismatch. Recommended by TS
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    // Don't allow to import js files
+    "allowJs": false
   },
 
   "watchOptions": {

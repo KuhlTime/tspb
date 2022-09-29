@@ -1,11 +1,28 @@
 {
   "root": true,
+  "env": {
+    "es2022": true
+  },
   // eslint-plugin-prettier integrates Prettier into ESLint.
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier", "unicorn", "sonarjs", "jsdoc", "import", "security"],
   // eslint-config-prettier disables all rules that are unnecessary or might conflict with Prettier.
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:unicorn/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:jsdoc/recommended",
+    "plugin:import/recommended",
+    "plugin:security/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-returns-type": "off",
+    "jsdoc/require-param": "off",
+    "jsdoc/require-returns": "off",
+    "jsdoc/tag-lines": "off"
   }
 }
