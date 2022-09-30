@@ -1,7 +1,7 @@
 {
   "name": "@kuhltime/ts-package-template",
   "version": "0.1.0",
-  "description": "",
+  "description": "An opinionated blueprint for creating typescript packages",
   "author": "André Kuhlmann",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -23,9 +23,11 @@
     "clean": "rimraf dist",
     "prepare": "npm run build",
     "lint": "eslint --ext .ts src",
-    "test": "jest"
+    "test": "jest",
+    "size": "size-limit"
   },
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.1.0",
     "@types/jest": "^29.1.0",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
@@ -44,6 +46,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-jsdoc": "^0.4.2",
     "rimraf": "^3.0.2",
+    "size-limit": "^8.1.0",
     "ts-jest": "^29.0.3",
     "tslib": "^2.4.0",
     "typescript": "^4.8.4"
