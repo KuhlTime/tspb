@@ -1,5 +1,5 @@
 {
-  "name": "@kuhltime/ts-package-template",
+  "name": "@kuhltime/tspb",
   "version": "0.1.0",
   "description": "An opinionated blueprint for creating typescript packages",
   "author": "André Kuhlmann",

@@ -1,0 +1,75 @@
+name: Deploy 🚀
+
+on:
+  push:
+    tags:
+      - "*"
+
+# Required for secrets.GITHUB_TOKEN
+permissions:
+  packages: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Node 📦
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install pnpm 📦
+        uses: pnpm/action-setup@v2.0.1
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory 💾
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup pnpm cache 💾
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install and Build 🔧
+        run: |
+          pnpm install
+
+      - name: Lint 🔍
+        run: pnpm lint
+
+      - name: Test 🧪
+        run: pnpm test
+
+      - name: Build 🏗
+        run: pnpm build
+
+      # - name: Publish to NPM
+      #   uses: JS-DevTools/npm-publish@v1
+      #   with:
+      #     access: public
+      #     token: ${{ secrets.NPM_TOKEN }}
+      #     check-version: true
+      #     greater-version-only: true
+
+      - name: Publish to GHCR 🚀
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          access: public
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
+          check-version: true
+          greater-version-only: false
