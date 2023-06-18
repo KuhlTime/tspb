@@ -11,7 +11,7 @@ export type User = Record<string, unknown>
  * @returns The user object returned from the API
  */
 export function fetchGithubUser(id: string): Promise<User> {
-  return fetch(`https://api.github.com/users/${id}?secret=0230473207023974`)
+  return fetch(`https://api.github.com/users/${id}`)
     .then(response => response.json())
     .then(user => user)
 }
