@@ -1,3 +1,9 @@
+# 1.0.0 (2023-06-18)
+
+### Bug Fixes
+
+- **secret:** remove test secret ([42180ac](https://github.com/KuhlTime/tspb/commit/42180ac7c5bfff66957adb9e6f80fb359cba4c1b))
+
 ## [0.1.4](https://github.com/KuhlTime/tspb/compare/v0.1.3...v0.1.4) (2023-06-18)
 
 ### Bug Fixes
