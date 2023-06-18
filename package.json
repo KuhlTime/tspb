@@ -44,7 +44,7 @@
   ],
   "scripts": {
     "commit": "cz",
-    "build": "npm run clean && concurrently -n esm,cjs,cli -c blue,magenta,gray \"tsc --build tsconfig.esm.json\" \"tsc --build tsconfig.cjs.json\" \"tsc --build tsconfig.cli.json\" && scripts/package-fixup.sh && node scripts/esm-import-fixup.js",
+    "build": "npm run clean && concurrently -n esm,cjs,cli -c blue,magenta,gray \"tsc --build tsconfig.esm.json\" \"tsc --build tsconfig.cjs.json\" \"tsc --build tsconfig.cli.json\" && scripts/package-fixup.sh && node scripts/esm-import-fixup.js && cp -r ./package.json ./dist",
     "clean": "rimraf dist",
     "prepare": "husky install",
     "preinstall": "npx -y only-allow pnpm",
