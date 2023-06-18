@@ -1,0 +1,66 @@
+{
+  "root": true,
+  "env": {
+    "es2022": true
+  },
+  // eslint-plugin-prettier integrates Prettier into ESLint.
+  "plugins": ["@typescript-eslint", "prettier", "unicorn", "sonarjs", "jsdoc", "import", "security", "check-file"],
+  // eslint-config-prettier disables all rules that are unnecessary or might conflict with Prettier.
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:unicorn/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:jsdoc/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:security/recommended"
+  ],
+  "overrides": [
+    {
+      "env": {
+        "jest/globals": true
+      },
+      "files": ["**/*.test.ts"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"]
+    },
+    {
+      "files": ["./src/cli.ts"],
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": ["./src/*/*.ts"], // Only allow the root level index.ts file
+      "rules": {
+        "check-file/no-index": "error"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "prettier/prettier": "error",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-returns-type": "off",
+    "jsdoc/require-param": "off",
+    "jsdoc/require-returns": "off",
+    "jsdoc/tag-lines": "off",
+    "import/no-useless-path-segments": "error"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": ["tsconfig.esm.json", "tsconfig.cjs.json", "tsconfig.cli.json"]
+      },
+      "node": {
+        "project": ["tsconfig.esm.json", "tsconfig.cjs.json", "tsconfig.cli.json"]
+      }
+    }
+  },
+  "ignorePatterns": ["dist", "node_modules"]
+}

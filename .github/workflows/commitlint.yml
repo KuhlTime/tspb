@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm 📦
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: Setup Node 📦
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies 📦
+        run: pnpm install --frozen-lockfile
+
+      - name: Print versions 🔖
+        run: |
+          git --version
+          node --version
+          npm --version
+          pnpm --version
+          npx commitlint --version
+
+      - name: Validate current commit (last commit) with commitlint 📝
+        if: github.event_name == 'push'
+        run: npx commitlint --from HEAD~1 --to HEAD --verbose
+
+      - name: Validate PR commits with commitlint 📝
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose

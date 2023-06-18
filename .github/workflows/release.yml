@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write # for creating a changelog commit and creating a release
+  issues: write # for commenting on related issues
+  pull-requests: write # to be able to comment on released pull requests
+  packages: write # for publishing to the GitHub Packages registry
+
+jobs:
+  # TODO: Run test job first
+  release:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm 📦
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: latest-8
+          run_install: false
+
+      - name: Setup Node 📦
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies 📦
+        run: pnpm install --frozen-lockfile
+
+      - name: Build 🏗️
+        run: pnpm build
+
+      - name: Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release --debug

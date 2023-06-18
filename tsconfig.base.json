@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "allowJs": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "dist/@types",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.js"],
+  "exclude": ["node_modules", "dist", "scripts"]
+}
