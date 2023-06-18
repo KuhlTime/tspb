@@ -2,6 +2,15 @@
 
 ### Bug Fixes
 
+- **release workflow:** add dist script in package json ([6607592](https://github.com/KuhlTime/tspb/commit/660759231de588aa2cb2bf2b23f1889c4b316099))
+- **release workflow:** copy package.json into dist folder ([6884a94](https://github.com/KuhlTime/tspb/commit/6884a947f8fa7821549823284f211f5e9c391b98))
+- **release workflow:** fix workflow order ([6c8edfb](https://github.com/KuhlTime/tspb/commit/6c8edfb8da246a819b958478d9881f7c00f6844e))
+- **secret:** remove test secret ([42180ac](https://github.com/KuhlTime/tspb/commit/42180ac7c5bfff66957adb9e6f80fb359cba4c1b))
+
+# 1.0.0 (2023-06-18)
+
+### Bug Fixes
+
 - **secret:** remove test secret ([42180ac](https://github.com/KuhlTime/tspb/commit/42180ac7c5bfff66957adb9e6f80fb359cba4c1b))
 
 ## [0.1.4](https://github.com/KuhlTime/tspb/compare/v0.1.3...v0.1.4) (2023-06-18)
